@@ -1,6 +1,11 @@
+locals {
+  workspace = "${terraform.workspace == "default" ? "lab" : terraform.workspace}"
+}
+
 provider "aws" {
-  alias  = "default"
-  region = "ap-southeast-2"
+  alias   = "default"
+  region  = "ap-southeast-2"
+  profile = "${local.workspace}"
 }
 
 module "stop-resources" {
