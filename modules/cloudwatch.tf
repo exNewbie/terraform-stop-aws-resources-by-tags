@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_event_rule" "StopResources" {
   name                = "StopResources-${random_pet.name-suffix.id}"
-  schedule_expression = "cron(00 09 * * ? *)"
+  schedule_expression = "${var.schedule_stop_resources}"
 }
 
 resource "aws_cloudwatch_event_target" "StopResources-Target" {
@@ -13,7 +13,7 @@ resource "aws_cloudwatch_event_target" "StopResources-Target" {
 
 resource "aws_cloudwatch_event_rule" "StartResources" {
   name                = "StartResources-${random_pet.name-suffix.id}"
-  schedule_expression = "cron(00 19 * * ? *)"
+  schedule_expression = "${var.schedule_start_resources}"
 }
 
 resource "aws_cloudwatch_event_target" "StartResources-Target" {

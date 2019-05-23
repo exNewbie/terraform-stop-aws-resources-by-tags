@@ -18,7 +18,7 @@ resource "aws_lambda_permission" "StopResourcesByTags-CloudWatchRule" {
 
 resource "aws_lambda_function" "StartResourcesByTags" {
   function_name    = "StartResourcesByTags-${random_pet.name-suffix.id}"
-  role             = "${aws_iam_role.StopResources.arn}"
+  role             = "${aws_iam_role.StartResources.arn}"
   handler          = "StartResourcesByTags.lambda_handler"
   filename         = "${path.module}/scripts/StartResourcesByTags.zip"
   source_code_hash = "${data.archive_file.StartResourcesByTags.output_base64sha256}"
