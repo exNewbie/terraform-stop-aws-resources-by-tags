@@ -1,3 +1,15 @@
+terraform {
+  backend "s3" {
+    encrypt = true
+
+    bucket         = "minergroup-terraform-state-store"
+    dynamodb_table = "terraform-state-lock"
+
+    region = "ap-southeast-2"
+    key    = "stop-resources/terraform-state-lock"
+  }
+}
+
 locals {
   workspace = "${terraform.workspace == "default" ? "lab" : terraform.workspace}"
 }

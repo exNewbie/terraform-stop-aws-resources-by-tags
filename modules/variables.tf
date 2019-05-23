@@ -9,8 +9,14 @@ variable "cloudwatch_event_target_input" {
 
 data "archive_file" "StopResourcesByTags" {
   type        = "zip"
-  source_file = "${path.module}/scripts/StopResourcesByTags.py"
+  source_dir  = "${path.module}/scripts/StopResourcesByTags"
   output_path = "${path.module}/scripts/StopResourcesByTags.zip"
+}
+
+data "archive_file" "StartResourcesByTags" {
+  type        = "zip"
+  source_dir  = "${path.module}/scripts/StartResourcesByTags"
+  output_path = "${path.module}/scripts/StartResourcesByTags.zip"
 }
 
 ### Resources ###

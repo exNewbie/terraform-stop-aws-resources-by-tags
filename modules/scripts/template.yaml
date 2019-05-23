@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Develop Lambda functions
+Resources:
+  StopResourcesByTags:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: StopResourcesByTags.lambda_handler
+      Timeout: 300
+      Runtime: python3.6
+
+  StartResourcesByTags:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: StartResourcesByTags.lambda_handler
+      Timeout: 300
+      Runtime: python3.6
