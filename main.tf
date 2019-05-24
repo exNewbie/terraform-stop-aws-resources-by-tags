@@ -1,9 +1,20 @@
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "#Your Organization#"
+
+    workspaces {
+      prefix = "start-stop-resources-"
+    }
+  }
+}
+
 provider "aws" {
   alias  = "default"
   region = "ap-southeast-2"
 }
 
-module "stop-resources" {
+module "start-stop-resources" {
   source = "./modules"
 
   providers = {
